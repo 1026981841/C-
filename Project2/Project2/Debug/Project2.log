@@ -1,0 +1,8 @@
+﻿  main.c
+c:\users\asus\desktop\小学期\project2\project2\user.h(156): warning C4013: “getSpotInf”未定义；假设外部返回 int
+c:\users\asus\desktop\小学期\project2\project2\user.h(285): warning C4047: “<=”:“int”与“Spot *”的间接级别不同
+c:\users\asus\desktop\小学期\project2\project2\main.c(19): error C2374: “sign”: 重定义；多次初始化
+  c:\users\asus\desktop\小学期\project2\project2\main.c(16): note: 参见“sign”的声明
+c:\users\asus\desktop\小学期\project2\project2\main.c(77): error C2065: “visitor”: 未声明的标识符
+c:\users\asus\desktop\小学期\project2\project2\main.c(77): error C2440: “函数”: 无法从“int”转换为“Vistor”
+c:\users\asus\desktop\小学期\project2\project2\main.c(77): warning C4024: “reservation1”: 形参和实参 3 的类型不同

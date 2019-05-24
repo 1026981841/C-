@@ -1,0 +1,2 @@
+﻿  IO.cpp
+c:\users\jyj\desktop\work\work\work\io.cpp(23): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据

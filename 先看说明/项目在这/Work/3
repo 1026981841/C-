@@ -1,0 +1,68 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<cstdio>
+#include<cstring>
+#include<cstdlib>
+#include<ctime>
+#include"foo.h"
+#include"structs.h"
+
+void err() {
+	printf("err\n");
+	exit(1);
+}
+
+void regisiter_visitor() {
+	FILE* fout = fopen("UserInfo.txt", "a+");
+	if(!fout) err();
+
+	Visitor v;
+	Visitor* fv = &v;
+	printf("ID, pwd, tel, num, type, MaxAge, MinAge\n");
+	scanf("%s %s %s %d %d %d %d", fv->ID, fv->pwd, fv->Tel, &fv->num, &fv->type, &fv->MaxAge, &fv->MinAge);
+
+	fwrite(fv, sizeof(Visitor), 1, fout);
+	fclose(fout);
+}
+
+void regisiter_admin() {
+	FILE* fout = fopen("AdminInfo.txt", "a+");
+	if(!fout) err();
+
+	Admin ad;
+	printf("ID, pwd, tel, email\n");
+	scanf("%s %s %s %s", ad.ID, ad.pwd, ad.Tel, ad.Email);
+
+	fwrite(&ad, sizeof(Admin), 1, fout);
+	fclose(fout);
+}
+
+
+void regisiter_spot() {
+	FILE* fout = fopen("SpotInfo.txt", "a+");
+	if(!fout) err();
+	FILE* fin = fopen("bar.txt", "r");
+	if(!fin) err();
+
+	Spot sp;
+	//printf("ID, name, isPeak, price, duratoin, discount, level, belong, MaintainCost\n");
+	//!!!!!!!!
+	fscanf(fin, "%s %s %d %d %d %f %d %d %d", sp.ID, sp.name, &sp.isPeak, &sp.price, &sp.duration, &sp.discount, &sp.level, &sp.belong, &sp.MaintainCost);
+	srand(time(0));
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 3; j++) {
+			sp.MaxPeople[i][j] = rand() % 100;
+		}
+	}
+
+	fin = fopen("Intro.txt", "r");
+	char s[500];
+	sp.Intro[0] = 0;
+	while(fgets(s, 100, fin)) {
+		printf("%s\n", s);
+		strcat(sp.Intro, s);
+	}
+	printf("%s\n", sp.Intro);
+
+	fwrite(&sp, sizeof(Spot), 1, fout);
+	fclose(fout);
+}
